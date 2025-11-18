@@ -44,7 +44,7 @@ export default function Hero({
           alt="Ying & Yang"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-[center_20%]"
           sizes="100vw"
         />
       </motion.div>
