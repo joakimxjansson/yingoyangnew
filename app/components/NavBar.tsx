@@ -32,7 +32,6 @@ export default function NavBar() {
     { href: '#home', label: 'Hem' },
     { href: '#shows', label: 'Turné' },
     { href: '#music', label: 'Musik' },
-    { href: '#videos', label: 'Videor' },
     { href: '#news', label: 'Nyheter' },
     { href: '#gallery', label: 'Galleri' },
     { href: '#contact', label: 'Kontakt' },

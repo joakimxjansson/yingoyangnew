@@ -16,6 +16,7 @@ export default function Contact() {
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -29,25 +30,40 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      eventDate: '',
-      venue: '',
-      city: '',
-      eventType: '',
-      message: '',
-    })
-    
-    // Reset after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000)
+    setError(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!res.ok) {
+        throw new Error('Något gick fel när meddelandet skulle skickas.')
+      }
+
+      setIsSubmitted(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        eventDate: '',
+        venue: '',
+        city: '',
+        eventType: '',
+        message: '',
+      })
+
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } catch (err) {
+      console.error(err)
+      setError('Kunde inte skicka meddelandet. Försök gärna igen senare.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -192,7 +208,7 @@ export default function Contact() {
                     htmlFor="venue"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    Venue/Lokal
+                    Plats/Lokal
                   </label>
                   <input
                     type="text"
@@ -201,7 +217,7 @@ export default function Contact() {
                     value={formData.venue}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-                    placeholder="Namn på venue"
+                    placeholder="Namn på Lokal"
                     aria-label="Venue"
                   />
                 </div>
@@ -223,13 +239,13 @@ export default function Contact() {
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
                   aria-label="Event type"
                 >
-                  <option value="">Välj typ av event</option>
-                  <option value="club">Klubb/Bar</option>
-                  <option value="festival">Festival</option>
-                  <option value="private">Privat event</option>
-                  <option value="corporate">Företagsevent</option>
-                  <option value="wedding">Bröllop</option>
-                  <option value="other">Annat</option>
+                  <option className="text-black"  value="">Välj typ av event</option>
+                  <option className="text-black"  value="club">Klubb/Bar</option>
+                  <option className="text-black"  value="festival">Festival</option>
+                  <option className="text-black"  value="private">Privat event</option>
+                  <option className="text-black"  value="corporate">Företagsevent</option>
+                  <option className="text-black"  value="wedding">Bröllop</option>
+                  <option className="text-black"  value="other">Annat</option>
                 </select>
               </div>
 
@@ -266,12 +282,18 @@ export default function Contact() {
                 </button>
               </div>
 
-              {/* GDPR Text */}
-              <p className="text-sm text-gray-500 text-center">
+       {/* GDPR Text + ev. felmeddelande */}
+       <p className="text-sm text-gray-500 text-center">
                 Genom att skicka detta formulär godkänner du att vi behandlar dina
                 personuppgifter enligt vår integritetspolicy. Dina uppgifter används
                 endast för att hantera din bokningsförfrågan.
               </p>
+
+              {error && (
+                <p className="text-sm text-red-400 text-center">
+                  {error}
+                </p>
+              )}
             </form>
           )}
         </motion.div>
@@ -279,4 +301,3 @@ export default function Contact() {
     </section>
   )
 }
-

@@ -181,11 +181,11 @@ export default function Home() {
       />
       <Shows shows={showsData} />
       <LatestRelease {...latestReleaseData} />
-      <Videos videos={videosData} />
+      {/* <Videos videos={videosData} />  */}
       <News news={newsData} />
-      <Contact />
+      <Contact /> 
       <Signup />
-      <Merch items={merchData} />
+     {/*  <Merch items={merchData} /> */}
       <Gallery images={galleryData} />
       <Footer />
     </main>

@@ -8,7 +8,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com/yingandyang.offical', icon: FaInstagram },
+    { name: 'Instagram', url: 'https://instagram.com/yingandyang.official', icon: FaInstagram },
     { name: 'Spotify', url: 'https://open.spotify.com/artist/yingyang', icon: FaSpotify },
     { name: 'YouTube', url: 'https://youtube.com/@yingyang', icon: FaYoutube },
     { name: 'SoundCloud', url: 'https://soundcloud.com/yingyang', icon: FaSoundcloud },
@@ -22,6 +22,7 @@ export default function Footer() {
     { href: '#videos', label: 'Videor' },
     { href: '#news', label: 'Nyheter' },
     { href: '#contact', label: 'Kontakt' },
+    { href: '/integritetspolicy', label: 'Integritetspolicy' },
   ]
 
   return (
