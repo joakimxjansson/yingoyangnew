@@ -47,37 +47,53 @@ import Footer from './components/Footer'
 // Dummy data för shows
 const showsData = [
   {
-    date: '2025-11-14 22:00 - 02:00',
+    date: '2025-11-28 22:00 - 02:00',
     city: 'Örebro',
     venue: 'Ritz',
     status: 'drop-in' as const,
     url: 'https://www.instagram.com/p/DQ623U8DKPG/',
   },
   {
-    date: '2025-11-14 22:00 - 02:00',
-    city: 'Karlstad',
-    venue: 'Verket',
-    status: 'soon' as const,
-  },
-  {
-    date: '2025-11-14 22:00 - 02:00',
-    city: 'Malmö',
-    venue: 'KB',
+    date: '2025-12-25 21:00 - 01:00',
+    city: 'Malung',
+    venue: 'Orrskogen',
     status: 'on-sale' as const,
-    url: 'https://example.com/tickets/malmo',
+    url: 'https://www.nortic.se/ticket/show/309146/',
   },
   {
-    date: '2025-11-14 22:00 - 02:00',
-    city: 'Uppsala',
-    venue: 'Flustret',
-    status: 'sold-out' as const,
+    date: '2026-01-09 - 2026-01-10 ',
+    city: 'Kryssning',
+    venue: 'Summer invasion',
+    status: 'on-sale' as const,
+    url: 'https://booking.summerinvasion.se/sokresultat-paketbokning?calendardates=2026-01-09&trp=STHLM-TALL-2026-01-09out&ppassword=kryssning1&adults=4',
+  },
+  {
+    date: '2026-01-23 - 2026-01-25 ',
+    city: 'Kryssning',
+    venue: 'Summer invasion',
+    status: 'on-sale' as const,
+    url: 'https://booking.summerinvasion.se/sokresultat-paketbokning?calendardates=2026-01-23&trp=STHLM-TALL-2026-01-23out&ppassword=kryssning2&adults=4%E2%81%A9',
+  },
+  {
+    date: '2026-01-30 22:00 - 03:00 ',
+    city: 'Växjö',
+    venue: 'Olearys',
+    status: 'drop-in' as const,
+    url: 'https://olearys.com/sv-se/vaexjoe/events/olearys-by-night-nattklubb/',
+  },
+  {
+    date: '2026-02-28 21:00 - 01:00 ',
+    city: 'Tranås',
+    venue: 'Babar nightclub',
+    status: 'soon' as const,
+    url: 'https://www.instagram.com/babarnightclub/',
   },
 ]
 
 // Dummy data för latest release
 const latestReleaseData = {
-  title: 'Midnight Dreams',
-  subtitle: 'Single Release',
+  title: 'Kommer snart!',
+  subtitle: 'Stay tuned för våran första release som kommer inom kort!',
   coverImage: '/cover.png',
   audioSrc: '/audio.mp3', // Lägg din audio-fil här
   streamingLinks: [
@@ -102,7 +118,7 @@ const latestReleaseData = {
       iconName: 'soundcloud' as const,
     },
   ],
-  tickerText: 'Ny singel "Midnight Dreams" ute nu!',
+  tickerText: 'Missa inte vårat första släpp!',
 }
 
 // Dummy data för videos
@@ -118,17 +134,17 @@ const newsData = [
     id: '1',
     title: 'Premiärshow i Örebro',
     date: '2025-11-14',
-    excerpt: 'Vi är glada att kunna meddela att vi har vår första show i Örebro den 14 november!',
+    excerpt: 'Vi är glada att kunna meddela att vi har vår första show i Örebro den 28 november!',
     image: '/news-1.jpg',
     url: 'https://www.instagram.com/p/DQ623U8DKPG/',
   },
   {
     id: '2',
-    title: 'Vi ses i Karlstad!',
+    title: 'Vi ses i Malung!',
     date: '2025-11-14',
-    excerpt: 'Datum och tider kommer snart!',
-    image: '/news-2.jpg',
-    url: 'https://www.nojesfabriken.se/nojen/verket-nattklubb/',
+    excerpt: 'På Juldagen kommer vi att befinna oss på den årliga hemvändarfesten på Orrskogen!',
+    image: '/gallery-2.jpg',
+    url: 'https://www.nortic.se/ticket/show/309146',
   },
   {
     id: '3',
@@ -174,7 +190,7 @@ export default function Home() {
       <NavBar />
       <Hero
         title="YING & YANG"
-        tagline="En DJ-duo som mixar kontraster — mjukt & hårt, ljust & mörkt."
+        tagline="The Art of Balance"
         primaryCta={{ text: 'Lyssna nu', href: '#music' }}
         secondaryCta={{ text: 'Boka oss', href: '#contact' }}
         imageSrc="/heropic.jpg"
@@ -183,8 +199,8 @@ export default function Home() {
       <LatestRelease {...latestReleaseData} />
       {/* <Videos videos={videosData} />  */}
       <News news={newsData} />
-      <Contact /> 
-      <Signup />
+      <Contact />
+      {/* <Signup /> */}
      {/*  <Merch items={merchData} /> */}
       <Gallery images={galleryData} />
       <Footer />

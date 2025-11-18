@@ -33,7 +33,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-bold mb-4">YING & YANG</h3>
             <p className="text-gray-400 text-sm">
-            En DJ-duo som mixar kontraster — mjukt & hårt, ljust & mörkt.
+              The Art of Balance
             </p>
           </div>
 
